@@ -46,49 +46,7 @@
     <script src="<?php echo base_url('assets/static/js/pages/date-picker.js')?>"></script>
 
     <!-- Log Out Otomatis -->
-    <script>
-      // Fungsi untuk mengatur timer otomatis logout
-      function startLogoutTimer() {
-        let timeoutId;
-
-        function resetTimer() {
-          clearTimeout(timeoutId);
-          timeoutId = setTimeout(logout, 30 * 60 * 1000); //30 Menit
-        }
-
-        function logout() {
-          window.location.href = '<?= base_url('/Login/log_out') ?>';
-        }
-
-        // Resep timer setiap kali ada aktivitas
-        window.addEventListener('mousemove', resetTimer);
-        window.addEventListener('click', resetTimer);
-        window.addEventListener('keypress', resetTimer);
-        resetTimer();
-      }
-
-      // Panggil fungsi untuk memulai timer otomatis logout
-      startLogoutTimer();
-    </script>
-      
-  
-<script>
-  let inactivityTime = 900000; // 15 menit dalam milidetik
-let timer;
-
-function resetTimer() {
-    clearTimeout(timer);
-    timer = setTimeout(function() {
-        location.reload(); // Me-refresh halaman jika tidak ada aktivitas selama 15 menit
-    }, inactivityTime);
-}
-
-window.addEventListener('mousemove', resetTimer);
-window.addEventListener('click', resetTimer);
-window.addEventListener('keypress', resetTimer);
-resetTimer(); // Memulai timer inaktivitas saat halaman dimuat
-
-  </script>
+   
     
   </body>
   </html>

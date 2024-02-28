@@ -1,0 +1,18 @@
+ERROR - 2024-02-28 01:18:57 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2024-02-28 01:18:57 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp\htdocs\ukk_darrell\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\ukk_darrell\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT `favicon...', Array, false)
+#2 C:\xampp\htdocs\ukk_darrell\app\Views\partial_login\header_login.php(14): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\ukk_darrell\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\ukk_darrell\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#5 C:\xampp\htdocs\ukk_darrell\system\Common.php(1089): CodeIgniter\View\View->render('partial_login/h...', Array, true)
+#6 C:\xampp\htdocs\ukk_darrell\app\Controllers\Login.php(21): view('partial_login/h...', Array)
+#7 C:\xampp\htdocs\ukk_darrell\system\CodeIgniter.php(832): App\Controllers\Login->index()
+#8 C:\xampp\htdocs\ukk_darrell\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xampp\htdocs\ukk_darrell\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ukk_darrell\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ukk_darrell\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#12 {main}
