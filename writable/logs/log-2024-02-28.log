@@ -36,3 +36,15 @@ CRITICAL - 2024-02-28 20:29:36 --> Invalid file: header.php
 #6 C:\xampp\htdocs\ukk_darrell\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #7 C:\xampp\htdocs\ukk_darrell\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #8 {main}
+CRITICAL - 2024-02-28 20:47:43 --> Use of undefined constant chartColors - assumed 'chartColors' (this will throw an Error in a future version of PHP)
+#0 C:\xampp\htdocs\ukk_darrell\app\Views\diagram.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\xampp\\htdocs...', 87, Array)
+#1 C:\xampp\htdocs\ukk_darrell\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\ukk_darrell\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\ukk_darrell\system\Common.php(1089): CodeIgniter\View\View->render('diagram', Array, true)
+#4 C:\xampp\htdocs\ukk_darrell\app\Controllers\diagram.php(19): view('diagram')
+#5 C:\xampp\htdocs\ukk_darrell\system\CodeIgniter.php(832): App\Controllers\diagram->index()
+#6 C:\xampp\htdocs\ukk_darrell\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\diagram))
+#7 C:\xampp\htdocs\ukk_darrell\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ukk_darrell\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ukk_darrell\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
