@@ -15,7 +15,17 @@
   ->getRow();
 
   ?>
-  <link rel="shortcut icon" href="<?=base_url('logo/'. $logo->favicon_website)?>" type="image/x-icon"/>
+ <link
+      rel="shortcut icon"
+      href="<?php echo base_url('assets/compiled/svg/obor.png')?>"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="<?php echo base_url('assets/compiled/svg/obor.png')?>"
+      type="image/png"
+    />
+
 
   <link rel="stylesheet" href="<?=base_url('assets/compiled/css/app.css')?>" />
   <link rel="stylesheet" href="<?=base_url('assets/compiled/css/app-dark.css')?>" />
