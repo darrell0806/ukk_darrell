@@ -16,7 +16,17 @@
                 </div>
             </div>
         </div>
+        <?php if (session()->has('error')) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?= session('error') ?>
+    </div>
+<?php endif ?>
 
+<?php if (session()->has('message')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session('message') ?>
+    </div>
+<?php endif ?>
 <div class="conatiner-fluid content-inner mt-n5 py-0">
    <div>
       <div class="row">

@@ -7,7 +7,7 @@ class M_penjualan extends Model
 {		
 	protected $table      = 'penjualan';
 	protected $primaryKey = 'PenjualanID';
-	protected $allowedFields = ['TanggalPenjualan', 'TotalHarga', 'PelangganID'];
+	protected $allowedFields = ['TanggalPenjualan', 'TotalHarga', 'PelangganID', 'bayar', 'kembalian', 'user'];
 	protected $useSoftDeletes = true;
 	protected $useTimestamps = true;
 

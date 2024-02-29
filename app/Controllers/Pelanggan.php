@@ -45,28 +45,40 @@ class Pelanggan extends BaseController
     }
 
     public function aksi_create()
-    { 
-        if (session()->get('level') == 1|| session()->get('level') == 2) {
-            $a = $this->request->getPost('nama_pelanggan');
-            $b = $this->request->getPost('alamat');
-            $c = $this->request->getPost('no_telepon');
+{ 
+    if (session()->get('level') == 1 || session()->get('level') == 2) {
+        $a = $this->request->getPost('nama_pelanggan');
+        $b = $this->request->getPost('alamat');
+        $c = $this->request->getPost('no_telepon');
 
-            // Data yang akan disimpan
-            $data1 = array(
-                'NamaPelanggan' => $a,
-                'Alamat' => $b,
-                'NomorTelepon' => $c
-            );
-
-            // Simpan data ke dalam database
-            $model = new M_pelanggan();
-            $model->simpan('pelanggan', $data1);
-
-            return redirect()->to('pelanggan');
-        } else {
-            return redirect()->to('/');
+        // Validasi apakah nomor telepon sudah ada di database
+        $model = new M_pelanggan();
+        if ($model->isNoTeleponExists($c)) {
+            // Jika nomor telepon sudah ada, tampilkan pesan kesalahan
+            return redirect()->back()->withInput()->with('error', 'Nomor telepon sudah ada di database.');
         }
+
+        // Jika nomor telepon belum ada, lanjutkan menyimpan data
+        // Data yang akan disimpan
+        $data1 = array(
+            'NamaPelanggan' => $a,
+            'Alamat' => $b,
+            'NomorTelepon' => $c
+        );
+
+        // Simpan data ke dalam database
+        $model->simpan('pelanggan', $data1);
+
+        // Set flash data untuk sukses
+        session()->setFlashdata('message', 'Data pelanggan berhasil disimpan.');
+
+        return redirect()->to('pelanggan');
+    } else {
+        return redirect()->to('/');
     }
+}
+
+    
 
     public function edit($id)
     { 

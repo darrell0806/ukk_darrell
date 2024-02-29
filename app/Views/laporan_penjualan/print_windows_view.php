@@ -86,7 +86,10 @@
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1; foreach ($penjualan as $riz) { ?>
+        <?php $no = 1; foreach ($penjualan as $riz) {
+                // Menambahkan subtotal ke total
+                $total += $riz->Subtotal;
+            ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $riz->NamaProduk ?></td>
@@ -103,7 +106,10 @@
 <div class="jumlah-container mt-5">
     <div class="jumlah-item">
         <p>Jumlah penjualan: <?= count($penjualan) ?></p>
-    </div>
+   
+    
+        <p>Total: Rp <?= number_format($total, 2, ',', '.') ?></p>
+        </div>
 </div>
 
 </div>

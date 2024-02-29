@@ -6,6 +6,7 @@ class M_model extends Model
 {
     public function tampil($table) {
         return $this->db->table($table)
+        ->where("$table.deleted_at", null)
         ->orderBy('created_at', 'desc')
         ->get()
         ->getResult();
@@ -239,6 +240,13 @@ class M_model extends Model
     public function getpeminjamanById($id_peminjaman)
     {
         return $this->db->table('peminjaman')->where('id_peminjaman', $id_peminjaman)->get()->getRow();
+    }
+    public function jointes($table1, $table2, $on){
+        return $this->db->table($table1)
+                        ->join($table2, $on, 'left')
+                        ->where("$table1.deleted_at IS NOT NULL")
+                        ->get()
+                        ->getResult();
     }
     public function joint($table1, $table2, $on, $userLevel, $userId){
         $query = $this->db->table($table1)

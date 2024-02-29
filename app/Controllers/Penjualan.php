@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\M_penjualan;
+use App\Models\M_detail_penjualan;
+use App\Models\M_model;
 use Dompdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -106,13 +108,21 @@ class Penjualan extends BaseController
     public function delete($id)
     { 
         if(session()->get('level')== 1 || session()->get('level')== 2) {
-            $model=new M_penjualan();
-            $model->deletee($id);
+            $model = new M_penjualan();
+            
+            // Ambil data detail penjualan yang terkait dengan id penjualan
+            $detailModel = new M_detail_penjualan();
+            $detailModel->where('PenjualanID', $id)->delete();
+    
+            // Hapus data penjualan
+            $model->delete($id);
+    
             return redirect()->to('penjualan');
-        }else {
+        } else {
             return redirect()->to('/');
         }
     }
+    
 
 
     // --------------------------------------- PRINT LAPORAN --------------------------------------
@@ -190,7 +200,23 @@ class Penjualan extends BaseController
             return redirect()->to('/');
         }
     }
-
+        public function view()
+        {
+            if(session()->get('level')==1|| session()->get('level') == 2){
+                $model=new M_model();
+                    $on='detailpenjualan.ProdukID=Produk.ProdukID';
+                    $data['a'] = $model->jointes('detailpenjualan', 'Produk',$on);
+                    $data['title'] = 'Data Produk DiHapus';
+                echo view('partial/header_datatable', $data);
+                echo view('partial/side_menu');
+                echo view('partial/top_menu');
+                    echo view('store',$data);
+                    echo view('partial/footer_datatable');
+                }else{
+                    return redirect()->to('/');
+        
+                }
+            }
     public function export_excel()
     {
         if (session()->get('level') == 1 || session()->get('level') == 2) {

@@ -16,87 +16,114 @@
                 </div>
             </div>
         </div>
-<div class="conatiner-fluid content-inner mt-n5 py-0">
-    <div class="row">
-        <!-- Cari Barang -->
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <div class="header-title">
-                        <h4 class="card-title"><i class="faj-button fa-solid fa-magnifying-glass"></i>Cari Produk</h4>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <select class="choices form-select" id="produk" name="produk">
-                                <option disabled selected>- Pilih -</option>
-                                <?php foreach ($produk_list as $p) { ?>
-                                    <option value="<?=$p->ProdukID?>"><?= $p->NamaProduk?></option>
-                                <?php } ?>
-                            </select>
+    <div class="conatiner-fluid content-inner mt-n5 py-0">
+        <div class="row">
+            <!-- Cari Barang -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title"><i class="faj-button fa-solid fa-magnifying-glass"></i>Cari Produk</h4>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bagian Pembayaran -->
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <div class="header-title">
-                        <h4 class="card-title"><i class="faj-button fa-regular fa-cart-shopping"></i>Pembayaran</h4>
-
-                        <!-- Form pembayaran -->
-                        <form id="form-pembayaran" action="<?= base_url('kasir/aksi_create') ?>" method="post">
-                            <div class="form-group row mt-3">
-                                <label class="control-label col-sm-3 align-self-center mb-0">Tanggal :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" readonly="readonly" name="tanggal" value="<?= date('d M Y') ?>" disabled style="margin-left: 20px;">
-                                </div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <select class="choices form-select" id="produk" name="produk">
+                                    <option disabled selected>- Pilih -</option>
+                                    <?php foreach ($produk_list as $p) { ?>
+                                        <option value="<?=$p->ProdukID?>"><?= $p->NamaProduk .' - ' . $p->Harga ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
-                            <div class="form-group row mt-3">
-                                <label class="control-label col-sm-3 align-self-center mb-0" style="padding-right: 0px;">Customer :</label>
-                                <div class="col-sm-9">
-                                    <select class="form-select" id="pelanggan" name="pelanggan" required style="margin-left: 20px;" required>
-                                        <option>- Pilih -</option>
-                                        <?php foreach ($pelanggan_list as $p) { ?>
-                                            <option value="<?= $p->PelangganID ?>"><?= $p->NamaPelanggan ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Input hidden untuk menyimpan ProdukID -->
-                            <input type="hidden" name="produk_id[]" id="produk_id_hidden">
-
-                            <!-- Input hidden untuk menyimpan total harga -->
-                            <input type="hidden" name="total_harga" id="total_harga_hidden">
-
-                            <!-- Tombol submit -->
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
+            </div>
 
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="datatable" class="table table-striped" data-toggle="data-table">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Produk</th>
-                                    <th>Harga</th>
-                                    <th>Jumlah</th>
-                                    <th>Subtotal</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Data produk akan ditambahkan di sini -->
-                            </tbody>
-                        </table>
+            <!-- Bagian Pembayaran -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title"><i class="faj-button fa-regular fa-cart-shopping"></i>Pembayaran</h4>
+
+                            <!-- Form pembayaran -->
+                            <form id="form-pembayaran" action="<?= base_url('kasir/aksi_create') ?>" method="post">
+                                <div class="form-group row mt-3">
+                                    <label class="control-label col-sm-3 align-self-center mb-0">Tanggal :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" readonly="readonly" name="tanggal" value="<?= date('d M Y') ?>" disabled style="margin-left: 20px;">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-3">
+                                    <label class="control-label col-sm-3 align-self-center mb-0" style="padding-right: 0px;">Customer :</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" id="pelanggan" name="pelanggan" required style="margin-left: 20px;" required>
+                                            <option>- Pilih -</option>
+                                            <?php foreach ($pelanggan_list as $p) { ?>
+                                                <option value="<?= $p->PelangganID ?>"><?= $p->NamaPelanggan ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Input hidden untuk menyimpan ProdukID -->
+                                <input type="hidden" name="produk_id[]" id="produk_id_hidden">
+
+                                <!-- Input hidden untuk menyimpan total harga -->
+                                <input type="hidden" name="total_harga" id="total_harga_hidden">
+
+                                <!-- Kolom Total Harga -->
+                                <div class="form-group row mt-3">
+                                    <label class="control-label col-sm-3 align-self-center mb-0">Total Harga :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" readonly="readonly" id="total_harga" disabled style="margin-left: 20px;">
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Pembayaran -->
+                                <div class="form-group row mt-3">
+                                <div id="pesan-kurang-bayar" class="text-danger" style="margin-top: 10px;"></div>
+
+                                    <label class="control-label col-sm-3 align-self-center mb-0">Bayar :</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="bayar" id="bayar" required style="margin-left: 20px;">
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Kembalian -->
+                                <div class="form-group row mt-3">
+                                    <label class="control-label col-sm-3 align-self-center mb-0">Kembali :</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="kembalian" readonly="readonly" id="kembalian"    style="margin-left: 20px;">
+                                    </div>
+                                </div>
+
+                                <!-- Tombol submit -->
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-striped" data-toggle="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Produk</th>
+                                        <th>Harga</th>
+                                        <th>Jumlah</th>
+                                        <th>Subtotal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data produk akan ditambahkan di sini -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,6 +132,7 @@
 </div>
 
 <script>
+
     $(document).ready(function() {
         // Inisialisasi DataTables di luar AJAX
         var table = $('#datatable').DataTable();
@@ -146,6 +174,7 @@
         // Tampilkan total harga
         function tampilkanTotalHarga(total) {
             $('#total_harga_hidden').val(total);
+            $('#total_harga').val(formatCurrency(total));
         }
 
         // Tangani perubahan pada pilihan produk
@@ -169,7 +198,7 @@
                         '<span class="subtotal"></span>', // Tambahkan tempat untuk subtotal
                         '<input type="hidden" name="produk_id[]" value="' + produkId + '">' + // Tambahkan input hidden untuk ProdukID
                         '<button class="btn btn-danger hapus-item"><i class="fa-solid fa-trash"></i></button>'
-                        ];
+                    ];
                     table.row.add(newRow).draw(); // Tambahkan baris ke DataTables dan draw ulang tabel
 
                     // Hitung subtotal untuk baris yang baru ditambahkan
@@ -222,6 +251,23 @@
             tampilkanTotalHarga(totalHarga);
         });
 
+       
+// Tangani perubahan pada kolom pembayaran
+$('#bayar').on('input', function() {
+    var bayar = parseFloat($(this).val());
+    var totalHarga = parseFloat($('#total_harga_hidden').val());
+    var kembalian = bayar - totalHarga;
+    if (kembalian < 0) {
+        // Jika pembayaran kurang dari total harga, tampilkan pesan kesalahan
+        $('#kembalian').val('Pembayaran kurang dari Total Harga');
+        $('#pesan-kurang-bayar').text('Pembayaran kurang dari Total Harga');
+    } else {
+        // Jika pembayaran cukup, hitung dan tampilkan kembalian
+        $('#kembalian').val(kembalian.toFixed(2)); // Menggunakan toFixed(2) untuk menampilkan dua digit desimal
+        $('#pesan-kurang-bayar').text(''); // Kosongkan pesan jika pembayaran cukup
+    }
+});
+
         // Tangani klik tombol submit
         $('#form-pembayaran').on('submit', function(e) {
             e.preventDefault(); // Mencegah perilaku default formulir
@@ -264,7 +310,7 @@
             // Tambahkan data ke input tersembunyi sebelum mengirimkan formulir
             $('#form-pembayaran').append('<input type="hidden" name="data_table" value=\'' + JSON.stringify(dataToSend) + '\' />');
 
-            // Hitung total harga dan tambahkan ke dalam data1 sebelum mengirimkan formulir
+            // Hitung total harga dan tambahkan ke dalam data sebelum mengirimkan formulir
             var totalHarga = hitungTotalHarga();
             $('#form-pembayaran').append('<input type="hidden" name="total_harga" value="' + totalHarga + '" />');
 

@@ -44,7 +44,7 @@
 <body>
     <div class="header">
     
-        <h3 class="judul mt-2">GT Kasir</h3>
+        <h3 class="judul mt-2">Kasir</h3>
     </div>
 
     <h3 class="text-center mb-4"><?= $title ?></h3>
@@ -72,7 +72,10 @@
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1; foreach ($penjualan as $riz) { ?>
+        <?php $no = 1; foreach ($penjualan as $riz) {
+                // Menambahkan subtotal ke total
+                $total += $riz->Subtotal;
+            ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= $riz->NamaProduk ?></td>
@@ -89,7 +92,10 @@
 <div class="jumlah-container mt-5">
     <div class="jumlah-item">
         <p>Jumlah penjualan: <?= count($penjualan) ?></p>
-    </div>
+   
+    
+        <p>Total: Rp <?= number_format($total, 2, ',', '.') ?></p>
+        </div>
 </div>
 
 </div>

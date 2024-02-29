@@ -82,12 +82,16 @@ class Kasir extends BaseController
             $a = date('Y-m-d');
             $b = $this->request->getPost('pelanggan');
             $c = $this->request->getPost('total_harga');
+            $d = $this->request->getPost('bayar');
+            $e = $this->request->getPost('kembalian');
 
         // Data yang akan disimpan
             $data1 = [
                 'TanggalPenjualan' => $a,
                 'PelangganID' => $b,
                 'TotalHarga' => $c,
+                'bayar' => $d,
+                'kembalian' => $e,
                 'user' => session()->get('id'),
             ];
 

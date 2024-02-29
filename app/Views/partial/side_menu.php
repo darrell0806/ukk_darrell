@@ -119,7 +119,12 @@ $logo = $builder->select('logo_website')
                     <span>Laporan Penjualan</span>
                   </a>
                 </li>
-              
+                <li class="sidebar-item  <?php if($uri->getSegment(1) == "diagram"){echo "active";}?>">
+                  <a href="<?=base_url('diagram')?>" class='sidebar-link'>
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <span>Diagram</span>
+                  </a>
+                </li>
               
               
             </ul>
@@ -182,7 +187,12 @@ $logo = $builder->select('logo_website')
                     <span>Laporan Penjualan</span>
                   </a>
                 </li>
-              
+                <li class="sidebar-item  <?php if($uri->getSegment(1) == "diagram"){echo "active";}?>">
+                  <a href="<?=base_url('diagram')?>" class='sidebar-link'>
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <span>Diagram</span>
+                  </a>
+                </li>
               
               
             </ul>

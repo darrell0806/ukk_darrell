@@ -15,6 +15,15 @@ class M_pelanggan extends Model
 	{
 		return $this->db->table($table1)->where('deleted_at', null)->get()->getResult();
 	}
+	public function isNoTeleponExists($no_telepon)
+{
+    // Query ke database untuk memeriksa apakah nomor telepon sudah ada
+    $row = $this->db->table('pelanggan')
+                   ->where('NomorTelepon', $no_telepon)
+                   ->countAllResults();
+    return ($row > 0) ? true : false;
+}
+
 	public function simpan($table, $data)
 	{
 		return $this->db->table($table)->insert($data);

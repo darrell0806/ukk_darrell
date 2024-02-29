@@ -45,6 +45,14 @@
     <script src="<?php echo base_url('assets/extensions/flatpickr/flatpickr.min.js')?>"></script>
     <script src="<?php echo base_url('assets/static/js/pages/date-picker.js')?>"></script>
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="<?php echo base_url('assets/extensions/dayjs/dayjs.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/static/js/pages/ui-apexchart.js')?>"></script>
+    <script src="<?php echo base_url('assets/extensions/apexcharts/apexcharts.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/extensions/chart.js/chart.umd.js')?>"></script>
+    <script src="<?php echo base_url('assets/static/js/pages/ui-chartjs.js')?>"></script>
     <!-- Log Out Otomatis -->
    
     

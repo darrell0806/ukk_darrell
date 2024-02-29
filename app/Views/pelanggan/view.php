@@ -29,7 +29,7 @@
 
          <div class="card-body">
             <div class="table-responsive">
-               <table id="datatable" class="table table-striped" data-toggle="data-table">
+               <table id="table1" class="table table-striped" data-toggle="data-table">
                   <thead>
                      <tr>
                         <th>No.</th>

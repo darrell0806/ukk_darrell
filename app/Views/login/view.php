@@ -4,7 +4,7 @@
 		<div class="col-lg-5 col-12">
 			<div id="auth-left">
 				<div class="auth-logo">
-					<img src="<?=base_url('assets/compiled/svg/logo.svg')?>" alt="Logo">
+				<img src="<?=base_url('assets/compiled/svg/T&T Supermarket.svg')?>"> 
 				</div>
 
 				<h1 class="auth-title">Log in.</h1>
